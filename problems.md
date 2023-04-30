@@ -59,3 +59,72 @@ console.log(minCoins(coins, amount))
 time complexity: The time complexity of the solution is O(amountn), where n is the length of the coins array.
 space complexity: The space complexity of the solution is O(amount). 
 ```
+
+# Depth First Search
+
+```
+class Graph {
+    constructor(){
+        this.edges = {};
+    }
+    
+    addVertex(v){
+        this.edges[v] = {};
+    }
+    
+    addEdges(u, v, weight){
+        if(weight === undefined){
+            weight = 0;
+        }
+        
+        this.edges[u][v] = weight;
+        this.edges[v][u] = weight;
+    }
+}
+
+Graph.prototype.dfs = function(vertex, fn){
+    const visited = {};
+    
+    this._dfs(vertex, fn, visited);
+}
+
+Graph.prototype._dfs = function(vertex, fn, visited){
+    visited[vertex]=true;
+    fn(vertex);
+    
+    for(let adjacentVertex in this.edges[vertex]){
+        if(!visited[adjacentVertex]){
+            this._dfs(adjacentVertex, fn, visited);
+        }
+    }
+}
+
+const g = new Graph();
+
+g.addVertex(1)
+g.addVertex(2)
+g.addVertex(3)
+g.addVertex(4)
+g.addVertex(5)
+g.addVertex(6)
+g.addVertex(7)
+g.addVertex(8)
+
+g.addEdges(1,2)
+g.addEdges(1,3)
+g.addEdges(2,4)
+g.addEdges(2,5)
+g.addEdges(3,6)
+g.addEdges(3,7)
+g.addEdges(4,8)
+g.addEdges(5,8)
+g.addEdges(6,8)
+g.addEdges(7,8)
+
+console.log(g)
+
+g.dfs(1, v => console.log(v);
+
+DFS is a relatively efficient algorithm for traversing graphs, with a time complexity of O(V + E) and a space complexity of O(h), where V is the number of vertices, E is the number of edges, and h is the maximum depth of the graph.
+```
+

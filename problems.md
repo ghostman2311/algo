@@ -128,3 +128,52 @@ g.dfs(1, v => console.log(v);
 DFS is a relatively efficient algorithm for traversing graphs, with a time complexity of O(V + E) and a space complexity of O(h), where V is the number of vertices, E is the number of edges, and h is the maximum depth of the graph.
 ```
 
+# Matrix Spiral Order
+
+```
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+
+function spiralTraverse(matrix) {
+  const result = [];
+  let rowStart = 0,
+    rowEnd = matrix.length - 1,
+    colStart = 0,
+    colEnd = matrix[0].length - 1;
+
+  while (rowStart <= rowEnd && colStart <= colEnd) {
+    // Traverse right
+    for (let i = colStart; i <= colEnd; i++) {
+      result.push(matrix[rowStart][i]);
+    }
+    rowStart++;
+
+    // Traverse down
+    for (let i = rowStart; i <= rowEnd; i++) {
+      result.push(matrix[i][colEnd]);
+    }
+    colEnd--;
+
+    // Traverse left
+    if (rowStart <= rowEnd) {
+      for (let i = colEnd; i >= colStart; i--) {
+        result.push(matrix[rowEnd][i]);
+      }
+      rowEnd--;
+    }
+
+    // Traverse up
+    if (colStart <= colEnd) {
+      for (let i = rowEnd; i >= rowStart; i--) {
+        result.push(matrix[i][colStart]);
+      }
+      colStart++;
+    }
+  }
+  console.log(result);
+}
+spiralTraverse(matrix)
+
+The time complexity of the spiralOrder algorithm is O(m * n) where m is the number of rows in the matrix and n is the number of columns in the matrix.
+The space complexity of the algorithm is also O(m * n) because the result array needs to store all the elements in the matrix, which can take up to O(m * n) space.
+```
+

@@ -177,3 +177,26 @@ The time complexity of the spiralOrder algorithm is O(m * n) where m is the numb
 The space complexity of the algorithm is also O(m * n) because the result array needs to store all the elements in the matrix, which can take up to O(m * n) space.
 ```
 
+# Kadane's algorithms
+
+```
+function kadaneAlgorithm(arr){
+    let maxSum = arr[0];
+    let currentSum = arr[0];
+    
+    for(let i =1; i<arr.length; i++){
+        currentSum = Math.max(arr[i], currentSum + arr[i]);
+        maxSum = Math.max(currentSum, maxSum);
+        
+    }
+    
+    return maxSum
+}
+
+const arr = [-2,1, -3, 4,-1, 2,1,-5,4];
+
+console.log(kadaneAlgorithm(arr));
+Space complexity: O(1)
+Time complexity: O(n);
+```
+

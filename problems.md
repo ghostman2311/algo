@@ -200,3 +200,33 @@ Space complexity: O(1)
 Time complexity: O(n);
 ```
 
+# Search in Sorted Matrix
+
+```
+let arr =[[1,4,7,12,15,1000], [2,5,19,31,32,1001], [3,8,24,33,35,1002], [40,41,42,44,45,1003], [99, 100,103, 106,128, 1004]];
+
+function sortedMatrix(arr, target){
+    let rows = arr.length;
+    let row =0;
+    let col = arr[0].length-1;
+    
+    while(row < rows && col >=0) {
+        if(arr[row][col] === target){
+            return [row, col];
+        } else if(arr[row][col] < target){
+            row++;
+        } else {
+            col--;
+        }
+    }
+    
+    return [-1,-1]
+}
+
+console.log(sortedMatrix(arr,99));
+
+Time complexity: O(Log(m+n))
+Space complexity: O(1)
+
+```
+
